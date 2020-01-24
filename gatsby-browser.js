@@ -24,9 +24,10 @@ var trustAllScripts = function () {
         }
 
         document.getElementsByTagName('head')[0].appendChild(s);
-    }
+    }s
 };
 
 exports.onRouteUpdate = function () {
     trustAllScripts();
 };
+

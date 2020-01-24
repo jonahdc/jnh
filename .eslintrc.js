@@ -11,7 +11,8 @@ module.exports = {
     extends: [
         'plugin:ghost/node',
         'plugin:ghost/ember',
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        'prettier'
     ],
     "settings": {
         "react": {
@@ -29,7 +30,6 @@ module.exports = {
         "no-inner-declarations": "off",
         "valid-jsdoc": "off",
         "require-jsdoc": "off",
-        "quotes": ["error", "backtick"],
         "consistent-return": ["error"],
         "arrow-body-style": [
             "error",

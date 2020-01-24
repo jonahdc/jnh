@@ -14,7 +14,6 @@ import { MetaData } from '../components/common/meta'
 */
 const Post = ({ data, location }) => {
     const post = data.ghostPost
-
     return (
         <>
             <MetaData
@@ -22,8 +21,8 @@ const Post = ({ data, location }) => {
                 location={location}
                 type="article"
             />
-            <Helmet>
-                <style type="text/css">{`${post.codeinjection_styles}`}</style>
+            <Helmet>s
+                <style type="text/css">{`${typeof post.codeinjection_styles === 'object' && post.codeinjection_styles}`}</style>
             </Helmet>
             <Layout>
                 <div className="container">
@@ -51,7 +50,7 @@ const Post = ({ data, location }) => {
 Post.propTypes = {
     data: PropTypes.shape({
         ghostPost: PropTypes.shape({
-            codeinjection_styles: PropTypes.object,
+            codeinjection_styles: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
             title: PropTypes.string.isRequired,
             html: PropTypes.string.isRequired,
             feature_image: PropTypes.string,

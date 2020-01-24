@@ -23,7 +23,7 @@ what's here to work the way you'd like it to.
 
     /* Colours */
     --color-primary: #3eb0ef;
-    --color-base: #15171A;
+    --color-base: rgb(56, 49, 85);
     --color-secondary: #5B7A81;
     --color-border: #c7d5d8;
     --color-bg: #f5f5f5;
@@ -309,7 +309,7 @@ html {
 
 body {
     overflow-x: hidden;
-    color: #3c484e;
+    color: var(--color-base);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 1.5rem;
     line-height: 1.6em;
@@ -555,6 +555,12 @@ h6 {
     object-fit: cover;
 }
 
+figcaption {
+    flex: auto;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
 .content-body h1,
 .content-body h2,
 .content-body h3,
@@ -648,15 +654,8 @@ h6 {
 }
 
 .content-body pre {
-    margin: 0.4em 0 1.8em;
-    font-size: 1.6rem;
-    line-height: 1.4em;
-    white-space: pre-wrap;
-    padding: 20px;
-    background: var(--color-base);
-    color: #fff;
-    border-radius: 12px;
-}
+    font-size: 1.4rem;
+  }
 
 /* Header
 /* ---------------------------------------------------------- */
@@ -769,12 +768,12 @@ h6 {
     display: grid;
     justify-content: space-between;
     grid-gap: 30px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 @media (max-width: 980px) {
     .post-feed {
-        grid-template-columns: 1fr 1fr;
+        max-width: 800px;
     }
 }
 @media (max-width: 680px) {
@@ -1012,4 +1011,12 @@ h6 {
 
 .site-foot-nav-right a:last-child {
     padding-right: 0;
+}
+
+:not(pre) > code {
+    border: 1px solid #d0ecfc;
+    background-color: #cde3ff;
+    border-radius: 3px;
+    font-size: 0.8em;
+    padding: 0.2em;
 }
