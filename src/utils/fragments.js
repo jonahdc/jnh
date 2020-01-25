@@ -1,15 +1,15 @@
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 
 /**
-* These so called fragments are the fields we query on each template.
-* A fragment make queries a bit more reuseable, so instead of typing and
-* remembering every possible field, you can just use
-*   ...GhostPostFields
-* for example to load all post fields into your GraphQL query.
-*
-* Further info 👉🏼 https://www.gatsbyjs.org/docs/graphql-reference/#fragments
-*
-*/
+ * These so called fragments are the fields we query on each template.
+ * A fragment make queries a bit more reuseable, so instead of typing and
+ * remembering every possible field, you can just use
+ *   ...GhostPostFields
+ * for example to load all post fields into your GraphQL query.
+ *
+ * Further info 👉🏼 https://www.gatsbyjs.org/docs/graphql-reference/#fragments
+ *
+ */
 
 // Used for tag archive pages
 export const ghostTagFields = graphql`
@@ -22,7 +22,7 @@ export const ghostTagFields = graphql`
         meta_title
         meta_description
     }
-`
+`;
 
 // Used for author pages
 export const ghostAuthorFields = graphql`
@@ -37,7 +37,7 @@ export const ghostAuthorFields = graphql`
         twitter
         facebook
     }
-`
+`;
 
 // Used for single posts
 export const ghostPostFields = graphql`
@@ -129,7 +129,7 @@ export const ghostPostFields = graphql`
         comment_id
         reading_time
     }
-`
+`;
 
 // Used for single pages
 export const ghostPageFields = graphql`
@@ -220,7 +220,7 @@ export const ghostPageFields = graphql`
         comment_id
         reading_time
     }
-`
+`;
 
 // Used for settings
 export const ghostSettingsFields = graphql`
@@ -242,4 +242,4 @@ export const ghostSettingsFields = graphql`
             url
         }
     }
-`
+`;

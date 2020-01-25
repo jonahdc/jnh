@@ -1,27 +1,33 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import { graphql } from 'gatsby';
+import React from 'react';
+import Helmet from 'react-helmet';
+import { Layout } from '../components/common';
+import { MetaData } from '../components/common/meta';
 
-import { Layout } from '../components/common'
-import { MetaData } from '../components/common/meta'
+interface PagProps {
+    data: {
+        ghostPage: {
+            codeinjection_styles: object;
+            title: string;
+            html: string;
+            feature_image: string;
+        };
+    };
+    location: object;
+}
 
 /**
-* Single page (/:slug)
-*
-* This file renders a single page and loads all the content.
-*
-*/
+ * Single page (/:slug)
+ *
+ * This file renders a single page and loads all the content.
+ *
+ */
 const Page = ({ data, location }) => {
-    const page = data.ghostPage
+    const page = data.ghostPage;
 
     return (
         <>
-            <MetaData
-                data={data}
-                location={location}
-                type="website"
-            />
+            <MetaData data={data} location={location} type="website" />
             <Helmet>
                 <style type="text/css">{`${page.codeinjection_styles}`}</style>
             </Helmet>
@@ -39,22 +45,10 @@ const Page = ({ data, location }) => {
                 </div>
             </Layout>
         </>
-    )
-}
+    );
+};
 
-Page.propTypes = {
-    data: PropTypes.shape({
-        ghostPage: PropTypes.shape({
-            codeinjection_styles: PropTypes.object,
-            title: PropTypes.string.isRequired,
-            html: PropTypes.string.isRequired,
-            feature_image: PropTypes.string,
-        }).isRequired,
-    }).isRequired,
-    location: PropTypes.object.isRequired,
-}
-
-export default Page
+export default Page;
 
 export const postQuery = graphql`
     query($slug: String!) {
@@ -62,4 +56,4 @@ export const postQuery = graphql`
             ...GhostPageFields
         }
     }
-`
+`;

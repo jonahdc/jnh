@@ -9,7 +9,7 @@
  * via ids/classnames etc.
  *
  */
-var trustAllScripts = function () {
+var trustAllScripts = function() {
     var scriptNodes = document.querySelectorAll('.load-external-scripts script');
 
     for (var i = 0; i < scriptNodes.length; i += 1) {
@@ -24,10 +24,11 @@ var trustAllScripts = function () {
         }
 
         document.getElementsByTagName('head')[0].appendChild(s);
-    }s
+    }
 };
 
-exports.onRouteUpdate = function () {
+exports.onRouteUpdate = function() {
     trustAllScripts();
 };
 
+require('prism-themes/themes/prism-material-light.css');
