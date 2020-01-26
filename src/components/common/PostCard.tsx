@@ -3,6 +3,7 @@ import { Tags } from '@tryghost/helpers-gatsby';
 import { Link } from 'gatsby';
 import moment from 'moment';
 import React from 'react';
+import styles from './PostCard.module.css';
 
 interface PostCardProps {
     showExcerpt: boolean;
@@ -30,39 +31,43 @@ const PostCard: React.SFC<PostCardProps> = ({ post, showExcerpt = false }) => {
     const month = moment(post.published_at).format('MMM');
     const year = moment(post.published_at).format('YYYY');
     return (
-        <Link to={url} className="post-card">
-            <header className="post-card-header">
-                {post.published_at && (
-                    <div className="post-card-header-date">
-                        <div className="date">{date}</div>
-                        <div>{month}</div>
-                    </div>
-                )}
+        <Link to={url} className={styles.postCard}>
+            <header className={styles.postCardHeader}>
                 <div>
-                    {post.feature_image && (
-                        <div
-                            className="post-card-image"
-                            style={{
-                                backgroundImage: `url(${post.feature_image})`,
-                            }}
-                        ></div>
-                    )}
-                    {post.tags && (
-                        <div className="post-card-tags">
-                            {' '}
-                            <Tags post={post} visibility="public" autolink={false} />
+                    <div className={styles.postCardHeaderMeta}>
+                        {post.published_at && (
+                            <div className={styles.postCardDate}>
+                                {date} {month} {year}
+                            </div>
+                        )}
+                        {post.tags && post.tags.length > 0 && (
+                            <div className={styles.postCardTags}>
+                                <Tags post={post} visibility="public" autolink={false} />
+                            </div>
+                        )}
+                    </div>
+                    <div className={styles.postCardBody}>
+                        <div className={styles.postCardTitleSection}>
+                            {post.feature_image && (
+                                <div
+                                    className="post-card-image"
+                                    style={{
+                                        backgroundImage: `url(${post.feature_image})`,
+                                    }}
+                                ></div>
+                            )}
+                            {post.featured && <span>Featured</span>}
+                            <h2>{post.title}</h2>
+                            <div>
+                                <div>{readingTime}</div>
+                            </div>{' '}
                         </div>
-                    )}
-                    {post.featured && <span>Featured</span>}
-                    <h2 className="post-card-title">{post.title}</h2>
+                        {true && (
+                            <section className={styles.postCardExcerpt}>{post.excerpt}</section>
+                        )}
+                    </div>
                 </div>
             </header>
-            {showExcerpt && <section className="post-card-excerpt">{post.excerpt}</section>}
-            <footer className="post-card-footer">
-                <div className="post-card-footer-left">
-                    <div>{readingTime}</div>
-                </div>
-            </footer>
         </Link>
     );
 };

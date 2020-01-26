@@ -41,6 +41,7 @@ module.exports = {
         siteUrl: config.siteUrl,
     },
     plugins: [
+        'gatsby-plugin-postcss',
         'gatsby-plugin-typescript',
         /**
          * Google Analytics
