@@ -27,7 +27,7 @@ const PostCard: React.SFC<PostCardProps> = ({ post, showExcerpt = false }) => {
     const url = `/${post.slug}/`;
     const readingTime = readingTimeHelper(post);
 
-    const date = moment(post.published_at).format('DDD');
+    const date = moment(post.published_at).format('DD');
     const month = moment(post.published_at).format('MMM');
     const year = moment(post.published_at).format('YYYY');
     return (
